@@ -1,0 +1,27 @@
+.vehicles-list {
+  width: 300px;
+  float: left;
+  position: relative;
+  padding-right: 80px;
+}
+.vehicle-edit {
+  width: 400px;
+  float: left;
+}
+.row label {
+  float: left;
+  margin-top: 5px;
+  width: 70px;
+}
+.row input {
+  margin-top: 5px;
+  width: 150px;
+}
+.row.submit input {
+  width: 80px;
+}
+.row {
+  position: relative;
+  display: block;
+}
+
