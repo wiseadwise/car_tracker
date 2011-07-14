@@ -4,6 +4,13 @@
   position: relative;
   padding-right: 80px;
 }
+.vehicles-list .vehicle .destroy {
+  float: right;
+}
+.vehicles-list .vehicle .identifier {
+  width: 30px;
+  float: left;
+}
 .vehicle-edit {
   width: 400px;
   float: left;

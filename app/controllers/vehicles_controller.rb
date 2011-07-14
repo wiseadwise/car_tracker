@@ -1,4 +1,6 @@
 class VehiclesController < ApplicationController
+  before_filter :require_user, :except => [ :index ]
+
   before_filter :set_vehicle, :set_vehicles
 
   def index

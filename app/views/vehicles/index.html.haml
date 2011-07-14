@@ -1,20 +1,25 @@
 %h1< Vehicles
-= link_to 'Add vehicle', new_vehicle_path
 %ul.vehicles-list
+  %li.vehicle
+    .identifier< ID
+    %span< Name
   - @vehicles.each do |v|
     %li.vehicle
-      %span<= link_to v.name, edit_vehicle_path(v)
-      %span<= v.identifier
-      %span<= link_to 'Delete', v, :confirm => 'Are you sure', :method => :delete
+      .identifier<= v.identifier
+      %span<= link_to_if current_user, v.name, edit_vehicle_path(v)
+      - if current_user
+        %span<= link_to 'Delete', v, :confirm => 'Are you sure', :method => :delete, :class => 'destroy'
 
-= form_for(@vehicle) do |f|
-  .vehicle-edit
-    - unless @vehicle.new_record?
+- if current_user
+  = link_to 'Add vehicle', new_vehicle_path
+  = form_for(@vehicle) do |f|
+    .vehicle-edit
+      - unless @vehicle.new_record?
+        .row
+          = f.label :identifier
+          = f.text_field :identifier 
       .row
-        = f.label :identifier
-        = f.text_field :identifier 
-    .row
-      = f.label :name
-      = f.text_field :name
-    .row.submit
-      = f.submit 'Сохранить'
+        = f.label :name
+        = f.text_field :name
+      .row.submit
+        = f.submit 'Сохранить'
