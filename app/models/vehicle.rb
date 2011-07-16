@@ -8,7 +8,7 @@ class Vehicle < ActiveRecord::Base
   protected
 
   def set_identifier
-    self.identifier = Vehicle.maximum(:identifier) + 1
+    self.identifier = (Vehicle.maximum(:identifier) || 0) + 1
   end
 
 end
