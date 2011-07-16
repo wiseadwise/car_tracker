@@ -30,4 +30,7 @@ gem 'authlogic'
 # and rake tasks are available in development mode:
 group :development, :test do
   gem 'sqlite3'
+  gem 'web-app-theme'
+  gem 'ruby_parser'
+  gem 'hpricot'
 end

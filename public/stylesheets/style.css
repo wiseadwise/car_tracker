@@ -1,5 +1,12 @@
+.menu {
+  float: right;
+  padding-right: 50px;
+}
+.login {
+  padding: 50px 0px 0px 50px;
+}
 .vehicles-list {
-  width: 300px;
+  width: 200px;
   float: left;
   position: relative;
   padding-right: 80px;
@@ -12,7 +19,7 @@
   float: left;
 }
 .vehicle-edit {
-  width: 400px;
+  width: 300px;
   float: left;
 }
 .row label {

@@ -1,3 +1,4 @@
+# encoding: utf-8
 class VehiclesController < ApplicationController
   before_filter :require_user, :except => [ :index ]
 
@@ -9,10 +10,10 @@ class VehiclesController < ApplicationController
   def create
     @vehicle = Vehicle.new(params[:vehicle])
     if @vehicle.save
-      flash[:notice] = 'created'
+      flash[:notice] = "Машина успешно создана"
       redirect_to :vehicles
     else
-      flash.now[:alert] = 'error'
+      flash.now[:alert] = "Произошла ошибка"
       render :index
     end
   end
@@ -27,20 +28,20 @@ class VehiclesController < ApplicationController
 
   def update
     if @vehicle.update_attributes(params[:vehicle])
-      flash[:notice] = 'updated'
+      flash[:notice] = "Машина успешно изменена"
       redirect_to :vehicles
     else
-      flash.now[:alert] = 'error'
+      flash.now[:alert] = "Произошла ошибка"
       render :index
     end
   end
 
   def destroy
     if @vehicle.destroy
-      flash[:notice] = 'destroyed'
+      flash[:notice] = "Машина успешно удалена"
       redirect_to :vehicles
     else
-      flash.now[:alert] = 'error'
+      flash.now[:alert] = "Произошла ошибка"
       render :index
     end
   end

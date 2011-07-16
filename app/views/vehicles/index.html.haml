@@ -1,17 +1,21 @@
-%h1< Vehicles
-%ul.vehicles-list
-  %li.vehicle
-    .identifier< ID
-    %span< Name
-  - @vehicles.each do |v|
-    %li.vehicle
-      .identifier<= v.identifier
-      %span<= link_to_if current_user, v.name, edit_vehicle_path(v)
-      - if current_user
-        %span<= link_to 'Delete', v, :confirm => 'Are you sure', :method => :delete, :class => 'destroy'
+%h1< Транспортные средства
+.vehicles-list
+  - if @vehicles.any?
+    %ul
+      %li.vehicle
+        .identifier< ID
+        %span< Имя
+      - @vehicles.each do |v|
+        %li.vehicle
+          .identifier<= v.identifier
+          %span<= link_to_if current_user, v.name, edit_vehicle_path(v)
+          - if current_user
+            %span<= link_to 'Удалить', v, :confirm => 'Вы уверены?', :method => :delete, :class => 'destroy'
+  - else
+    Нет добавленных транспортных средств
 
 - if current_user
-  = link_to 'Add vehicle', new_vehicle_path
+  = link_to 'Добавить машину', new_vehicle_path
   = form_for(@vehicle) do |f|
     .vehicle-edit
       - unless @vehicle.new_record?

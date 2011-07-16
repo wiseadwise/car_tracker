@@ -1,9 +1,10 @@
-= form_for(@user_session, :url => user_session_path) do |f|
-  .row
-    = f.label 'email'
-    = f.text_field :email
-  .row
-    = f.label 'password'
-    = f.password_field :password
-  .row.submit
-    = f.submit 'Save'
+.login
+  = form_for(@user_session, :url => user_session_path) do |f|
+    .row
+      = f.label 'email'
+      = f.text_field :email
+    .row
+      = f.label 'password'
+      = f.password_field :password
+    .row.submit
+      = f.submit 'Save'
