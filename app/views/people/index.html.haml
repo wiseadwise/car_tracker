@@ -1,0 +1,35 @@
+%h1< Персонал 
+.people-list
+  - if @people.any?
+    %ul
+      %li.person
+        %span.name.header< ФИO
+        %span.status.header< Должность
+        %span< &nbsp;
+      - @people.each do |u|
+        %li.person
+          %span.name<= link_to_if current_user, u.full_name, edit_person_path(u)
+          %span.status<= Person::ROLES[u.role.to_sym]
+          - if current_user
+            %span<= link_to 'Удалить', u, :confirm => 'Вы уверены?', :method => :delete, :class => 'destroy'
+  - else
+    Нет добавленных транспортных средств
+
+- if current_user
+  = link_to 'Добавить работника', new_person_path
+  = form_for(@person) do |f|
+    .vehicle-edit
+      .row
+        = f.label :first_name
+        = f.text_field :first_name 
+      .row
+        = f.label :second_name
+        = f.text_field :second_name
+      .row
+        = f.label :last_name
+        = f.text_field :last_name
+      .row
+        = f.label :role
+        = f.select :role, options_for_select(Person::EMPLOYEE_ROLES.map { |r| [ Person::ROLES[r], r.to_s ] }, @person.role)
+      .row.submit
+        = f.submit 'Сохранить'

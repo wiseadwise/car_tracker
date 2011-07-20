@@ -1,6 +1,7 @@
 CarTracker::Application.routes.draw do
 
   resources :vehicles, :only => [:index, :create, :update, :destroy, :edit, :new]
+  resources :people, :only => [:index, :create, :update, :destroy, :edit, :new]
 
   resource :user_session, :only => [:new, :create, :destroy]
   get '/login' => "user_sessions#new", :as => :login

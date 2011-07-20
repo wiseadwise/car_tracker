@@ -5,6 +5,11 @@
 .login {
   padding: 50px 0px 0px 50px;
 }
+
+.header {
+  font-weight: bold;
+}
+
 .vehicles-list {
   width: 200px;
   float: left;
@@ -22,10 +27,11 @@
   width: 300px;
   float: left;
 }
+
 .row label {
   float: left;
   margin-top: 5px;
-  width: 70px;
+  width: 100px;
 }
 .row input {
   margin-top: 5px;
@@ -37,5 +43,25 @@
 .row {
   position: relative;
   display: block;
+  padding-bottom: 10px;
 }
 
+.people-list {
+  width: 350px;
+  float: left;
+  position: relative;
+  padding-right: 80px;
+}
+.people-list .person .name {
+  width: 200px;
+  float: left;
+}
+.people-list .person .status {
+  width: 80px;
+  float: left;
+}
+
+.field_with_errors input {
+  border-color: red;
+  border-width: 3px;
+}

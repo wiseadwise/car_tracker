@@ -6,5 +6,10 @@
     = csrf_meta_tag
   %body
     #container
+      #wrapper.wat-cf
+        .flash
+          - flash.each do |type, message|
+            %div{:class => "message #{type}"}
+              %p= message
       #box
         = yield

@@ -29,6 +29,7 @@ gem 'authlogic'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
+  gem 'hirb'
   gem 'sqlite3'
   gem 'web-app-theme'
   gem 'ruby_parser'

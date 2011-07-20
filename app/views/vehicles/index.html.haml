@@ -3,8 +3,8 @@
   - if @vehicles.any?
     %ul
       %li.vehicle
-        .identifier< ID
-        %span< Имя
+        .identifier.header< ID
+        %span.header< Название
       - @vehicles.each do |v|
         %li.vehicle
           .identifier<= v.identifier
