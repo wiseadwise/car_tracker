@@ -4,7 +4,7 @@ p = Person.create(
   :last_name => 'Adminov'
 )
 User.create(
-  :email => 'admin@local.com',
+  :email => 'test@local.com',
   :password => '123456',
   :password_confirmation => '123456',
   :person_id => p.id

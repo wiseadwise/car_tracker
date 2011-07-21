@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  date: 2011-07-21 21:56:02
+  time: MyString
+  person_id: 1
+
+two:
+  date: 2011-07-21 21:56:02
+  time: MyString
+  person_id: 1

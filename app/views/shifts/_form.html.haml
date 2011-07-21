@@ -1,0 +1,16 @@
+:javascript
+  $(function() {
+    $( "#shift_date" ).datepicker();
+  });
+= form_for(@shift) do |f|
+  .row
+    = f.label :date
+    = f.text_field :date 
+  .row
+    = f.label :time
+    = f.select :time, options_for_select(Shift::TIMES.keys.map { |t| [ Shift::TIMES[t], t.to_s ] })
+  .row
+    = f.label :person, "Мастер"
+    = f.select :person, options_for_select(Person.where(:role => 'master').map { |p| [ p.full_name, p.id ] })
+  .row.submit
+    = f.submit
