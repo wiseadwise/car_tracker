@@ -13,7 +13,7 @@
           - if current_user
             %span<= link_to 'Удалить', u, :confirm => 'Вы уверены?', :method => :delete, :class => 'destroy'
   - else
-    Нет добавленных транспортных средств
+    Нет добавленных работников
 
 - if current_user
   = link_to 'Добавить работника', new_person_path
