@@ -9,6 +9,8 @@ gem 'pg'
 gem 'haml'
 gem 'authlogic'
 
+gem 'paperclip'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

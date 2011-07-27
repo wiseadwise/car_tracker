@@ -5,6 +5,9 @@ class Vehicle < ActiveRecord::Base
 
   before_validation(:set_identifier, :on => :create)
 
+  has_many :trips
+  has_many :person_shifts
+
   protected
 
   def set_identifier

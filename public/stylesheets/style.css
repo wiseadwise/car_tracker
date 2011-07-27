@@ -46,6 +46,14 @@
   padding-bottom: 10px;
 }
 
+.shifts-list {
+  width: 500px;
+}
+
+.shifts-list .time {
+  width: 45px;
+}
+
 .people-list {
   width: 350px;
   float: left;

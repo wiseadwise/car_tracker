@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110721185602) do
+ActiveRecord::Schema.define(:version => 20110727181554) do
 
   create_table "people", :force => true do |t|
     t.string   "first_name",  :null => false
@@ -21,10 +21,29 @@ ActiveRecord::Schema.define(:version => 20110721185602) do
     t.datetime "updated_at"
   end
 
+  create_table "person_shifts", :force => true do |t|
+    t.integer  "person_id"
+    t.integer  "trips_count"
+    t.integer  "vehicle_id"
+    t.integer  "shift_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "shifts", :force => true do |t|
     t.datetime "date",       :null => false
     t.string   "time",       :null => false
     t.integer  "person_id",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "trips", :force => true do |t|
+    t.integer  "vehicle_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.string   "image_file_size"
+    t.string   "image_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

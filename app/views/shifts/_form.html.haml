@@ -10,7 +10,7 @@
     = f.label :time
     = f.select :time, options_for_select(Shift::TIMES.keys.map { |t| [ Shift::TIMES[t], t.to_s ] })
   .row
-    = f.label :person, "Мастер"
-    = f.select :person, options_for_select(Person.where(:role => 'master').map { |p| [ p.full_name, p.id ] })
+    = f.label :master, "Мастер"
+    = f.select :master, options_for_select(Person.where(:role => 'master').map { |p| [ p.full_name, p.id ] })
   .row.submit
-    = f.submit
+    = f.submit 'Сохранить'

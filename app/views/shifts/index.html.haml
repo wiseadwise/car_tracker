@@ -1,7 +1,13 @@
 = link_to 'Добавить смену', new_shift_path
-- @shifts.each do |shift|
-  %div
-    = shift.date.to_s(:short_date)
-    = Shift::TIMES[shift.time.to_sym]
-    = shift.person.name
-    = link_to 'Удалить', shift, :confirm => 'Вы уверены?', :method => :delete
+%table.table.shifts-list
+  %tr
+    %th.first<= t 'activerecord.attributes.shift.date'
+    %th.time<= t 'activerecord.attributes.shift.time'
+    %th<= t 'activerecord.attributes.shift.master'
+    %th.delete< &nbsp;
+  - @shifts.each do |shift|
+    %tr
+      %td<= shift.date.to_s(:short_date)
+      %td<= Shift::TIMES[shift.time.to_sym]
+      %td<= shift.master.name
+      %td<= link_to 'Удалить', shift, :confirm => 'Вы уверены?', :method => :delete

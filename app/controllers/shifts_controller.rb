@@ -11,7 +11,7 @@ class ShiftsController < ApplicationController
 
   def create
     @shift = Shift.new(params[:shift].slice(:date, :time))
-    @shift.person = Person.find(params[:shift][:person])
+    @shift.master = Person.find(params[:shift][:master])
     if @shift.save
       flash[:alert] = 'Смена успешно создана'
       redirect_to :shifts
