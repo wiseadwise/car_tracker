@@ -4,9 +4,6 @@ class Person < ActiveRecord::Base
   validates :first_name, :second_name, :last_name, :presence => true
 
   has_one :user
-  has_many :shifts, :dependent => :destroy
-  has_many :person_shifts, :dependent => :destroy
-  has_many :shifts, :through => :person_shifts
 
   ROLES = {
     :admin   => 'Администартор',
@@ -17,10 +14,7 @@ class Person < ActiveRecord::Base
 
   EMPLOYEE_ROLES = [ :driver, :master ]
 
-  scope :employee, where(:role => EMPLOYEE_ROLES)
-  scope :drivers, where(:role => 'driver')
-
-  validates :role, :presence => true, :inclusion => { :in => ROLES.keys.map(&:to_s) }
+  scope :employee, where(:type => EMPLOYEE_ROLES.map { |role| role.to_s.capitalize })
 
   def name
     [ first_name, last_name ].join(' ')
@@ -28,6 +22,14 @@ class Person < ActiveRecord::Base
 
   def full_name
     [ last_name, first_name, second_name ].join(' ')
+  end
+
+  def short_name
+    "#{first_name.first}. #{second_name.first}. #{last_name}"
+  end
+
+  def role
+    ROLES[self.class.name.underscore.to_sym]
   end
 
 end

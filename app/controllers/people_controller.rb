@@ -7,9 +7,10 @@ class PeopleController < ApplicationController
   end
 
   def create
-    @person = Person.new(params[:person])
+    role = params[:person].delete(:role).classify.constantize
+    @person = role.new(params[:person])
     if @person.save
-      flash[:notice] = "Работник успешно создан"
+      flash[:notice] = "Работник успешно добавлен"
       redirect_to :people
     else
       flash.now[:alert] = "Произошла ошибка"
@@ -23,6 +24,14 @@ class PeopleController < ApplicationController
 
   def new
     render :index
+  end
+
+  def shifts
+    @person = Person.find(params[:id])
+    @shift = Shift.find(params[:shift_id]) if params[:shift_id]
+    @trips = @person.trips(@shift) if @shift
+    @shifts = @person.shifts
+    @shifts = @shifts.where(["DATE(date) >= ? AND DATE(date) <= ?", params[:start_date], params[:finish_date]]) if request.post?
   end
 
   def update

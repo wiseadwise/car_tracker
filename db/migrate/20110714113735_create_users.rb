@@ -13,7 +13,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :first_name, :null => false
       t.string :second_name, :null => false
       t.string :last_name, :null => false
-      t.string :role, :null => false
+      t.string :type, :null => false
       t.timestamps
     end
   end

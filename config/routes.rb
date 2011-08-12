@@ -2,13 +2,19 @@ CarTracker::Application.routes.draw do
 
   resources :vehicles
   resources :people 
-  resources :shifts 
+  resources :drivers, :controller => "people"
+  resources :masters, :controller => "people"
+
+  match '/people/:id/shifts' => "people#shifts", :as => :person_shifts
+
+  get '/shifts/trips' => "shifts#trips"
+  resources :shifts
 
   resource :user_session, :only => [:new, :create, :destroy]
   get '/login' => "user_sessions#new", :as => :login
   match '/logout' => "user_sessions#destroy", :as => :logout
 
-  root :to => "vehicles#index" 
+  root :to => "vehicles#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

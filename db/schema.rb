@@ -16,16 +16,16 @@ ActiveRecord::Schema.define(:version => 20110727181554) do
     t.string   "first_name",  :null => false
     t.string   "second_name", :null => false
     t.string   "last_name",   :null => false
-    t.string   "role",        :null => false
+    t.string   "type",        :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "person_shifts", :force => true do |t|
-    t.integer  "person_id"
+    t.integer  "driver_id",   :null => false
     t.integer  "trips_count"
-    t.integer  "vehicle_id"
-    t.integer  "shift_id"
+    t.integer  "vehicle_id",  :null => false
+    t.integer  "shift_id",    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20110727181554) do
   create_table "shifts", :force => true do |t|
     t.datetime "date",       :null => false
     t.string   "time",       :null => false
-    t.integer  "person_id",  :null => false
+    t.integer  "master_id",  :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

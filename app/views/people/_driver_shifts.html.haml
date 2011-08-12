@@ -1,0 +1,10 @@
+%h2<= "Смены водителя \"#{@person.full_name}\""
+- @shifts.each do |shift|
+  %div<= link_to_if shift.id != params[:shift_id].to_i, 
+    "#{shift.date.to_s(:short_date)} / #{shift.time_name} / Рейсов: #{@person.trips_count(shift)}", :shift_id => shift.id
+- if @shift
+  - @trips.each_with_index do |trip, i|
+    = "#{i + 1})"
+    = trip.created_at.to_s(:time)
+    = trip.vehicle.name
+    = link_to "Фото", trip.image.url

@@ -3,7 +3,7 @@ class CreateShifts < ActiveRecord::Migration
     create_table :shifts do |t|
       t.datetime :date, :null => false
       t.string :time, :null => false
-      t.integer :person_id, :null => false
+      t.integer :master_id, :null => false
 
       t.timestamps
     end

@@ -9,8 +9,9 @@
       - @people.each do |u|
         %li.person
           %span.name<= link_to_if current_user, u.full_name, edit_person_path(u)
-          %span.status<= Person::ROLES[u.role.to_sym]
+          %span.status<= u.role
           - if current_user
+            %span<= link_to 'Смены', person_shifts_path(u)
             %span<= link_to 'Удалить', u, :confirm => 'Вы уверены?', :method => :delete, :class => 'destroy'
   - else
     Нет добавленных работников
@@ -30,6 +31,6 @@
         = f.text_field :last_name
       .row
         = f.label :role
-        = f.select :role, options_for_select(Person::EMPLOYEE_ROLES.map { |r| [ Person::ROLES[r], r.to_s ] }, @person.role)
+        = f.select :role, options_for_select(Person::EMPLOYEE_ROLES.map { |r| [ Person::ROLES[r], r.to_s ] }, @person.type)
       .row.submit
         = f.submit 'Сохранить'

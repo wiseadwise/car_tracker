@@ -1,6 +1,9 @@
 :javascript
   $(function() {
     $( "#shift_date" ).datepicker();
+    $("#shift_date").change(function (){
+      $.get("/shifts/trips", { 'date': $("#shift_date").val(), 'time': $("#shift_time").val() }, null, "script");
+    });
   });
 = form_for(@shift) do |f|
   .row
@@ -11,6 +14,8 @@
     = f.select :time, options_for_select(Shift::TIMES.keys.map { |t| [ Shift::TIMES[t], t.to_s ] })
   .row
     = f.label :master, "Мастер"
-    = f.select :master, options_for_select(Person.where(:role => 'master').map { |p| [ p.full_name, p.id ] })
+    = f.select :master, options_for_select(Master.all.map { |p| [ p.full_name, p.id ] })
+  .row#trips
+    = render :partial => "trips"
   .row.submit
     = f.submit 'Сохранить'

@@ -1,6 +1,6 @@
-p = Person.create(
-  :role => 'admin',
+p = Admin.create(
   :first_name => "Admin",
+  :second_name => 'Sergeevich',
   :last_name => 'Adminov'
 )
 User.create(
@@ -9,14 +9,14 @@ User.create(
   :password_confirmation => '123456',
   :person_id => p.id
 )
-Person.create(
-  :role => 'driver',
+Driver.create(
   :first_name => "Driver",
+  :second_name => 'Sergeevich',
   :last_name => 'Driverov'
 )
-Person.create(
-  :role => 'master',
+Master.create(
   :first_name => "Master",
+  :second_name => 'Sergeevich',
   :last_name => 'Masterov'
 )
 Vehicle.create(

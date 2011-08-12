@@ -7,11 +7,16 @@ class ShiftsController < ApplicationController
 
   def new
     @shift = Shift.new
+    @trips_data = {}
+  end
+
+  def trips
+    @trips_data = Trip.for_shift(params[:date], params[:time]).group_by(&:vehicle)
   end
 
   def create
     @shift = Shift.new(params[:shift].slice(:date, :time))
-    @shift.master = Person.find(params[:shift][:master])
+    @shift.master = Master.find(params[:shift][:master])
     if @shift.save
       flash[:alert] = 'Смена успешно создана'
       redirect_to :shifts
