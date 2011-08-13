@@ -1,1 +1,1 @@
-$("#trips").html("<%= escape_javascript(render("trips")) %>");
+$("#trips").html("<%= escape_javascript(render(:partial => "trips", :locals => { :person_shifts => @person_shifts } )) %>");

@@ -9,7 +9,9 @@
      visibility: hidden;
 }
 
-.wat-cf {display: inline-block;}
+.wat-cf {
+  display: inline-block;
+}
 
 /* Hides from IE-mac \*/
 * html .wat-cf {height: 1%;}

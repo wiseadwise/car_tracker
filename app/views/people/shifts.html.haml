@@ -1,7 +1,7 @@
 :javascript
   $(function() {
-    $( "#start_date" ).datepicker();
-    $( "#finish_date" ).datepicker();
+    $( "#start_date" ).datepicker({ dateFormat: 'dd/mm/yy' });
+    $( "#finish_date" ).datepicker({ dateFormat: 'dd/mm/yy' });
   });
 = form_tag do
   .row

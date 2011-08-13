@@ -1,0 +1,15 @@
+.row
+  = label_tag 'Дата:'
+  = @shift.date.to_s(:short_date)
+.row
+  = label_tag 'Время:'
+  = Shift::TIMES[@shift.time.to_sym]
+%table.table.person-shifts
+  %th< Машина
+  %th< Водитель
+  %th< Кол-во рейсов
+  - @shift.person_shifts.each do |ps|
+    %tr
+      %td<= ps.vehicle.name
+      %td<= ps.driver.full_name
+      %td<= ps.trips_count

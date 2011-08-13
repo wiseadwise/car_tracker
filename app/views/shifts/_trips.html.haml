@@ -1,3 +1,11 @@
-- @trips_data.each do |vehicle, trips|
-  = vehicle.name
-  = trips.count
+%table.table
+  %th< Машина
+  %th< Кол-во рейсов
+  %th< Водитель
+  - person_shifts.each_with_index do |person_shift, index|
+    %tr
+      = fields_for "person_shifts[#{index}]", person_shift do |f|
+        %td<= person_shift.vehicle.name
+        %td<= f.text_field :trips_count, :class => 'trips-count'
+        = f.text_field :vehicle_id, :hidden => true 
+        %td<= f.select :driver_id, Driver.all.map { |d| [ d.full_name, d.id ] }

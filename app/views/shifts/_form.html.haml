@@ -1,21 +1,22 @@
 :javascript
   $(function() {
-    $( "#shift_date" ).datepicker();
-    $("#shift_date").change(function (){
+    $( "#shift_date" ).datepicker({ dateFormat: 'dd/mm/yy' });
+    $("#shift_date, #shift_time").change(function (){
+      $("#trips").html("Загрузка поездок...");
       $.get("/shifts/trips", { 'date': $("#shift_date").val(), 'time': $("#shift_time").val() }, null, "script");
     });
   });
 = form_for(@shift) do |f|
   .row
     = f.label :date
-    = f.text_field :date 
+    = f.text_field :date, :value => @shift.date.try(:strftime, '%d/%m/%Y')
   .row
     = f.label :time
-    = f.select :time, options_for_select(Shift::TIMES.keys.map { |t| [ Shift::TIMES[t], t.to_s ] })
+    = f.select :time, options_for_select(Shift::TIMES.keys.map { |t| [ Shift::TIMES[t], t.to_s ] }, @shift.time)
   .row
     = f.label :master, "Мастер"
     = f.select :master, options_for_select(Master.all.map { |p| [ p.full_name, p.id ] })
   .row#trips
-    = render :partial => "trips"
+    = render :partial => "trips", :locals => {:person_shifts => @shift.person_shifts }
   .row.submit
     = f.submit 'Сохранить'
