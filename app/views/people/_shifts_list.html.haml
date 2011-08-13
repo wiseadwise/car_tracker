@@ -1,0 +1,9 @@
+%table
+  %th< Дата 
+  %th< Время
+  %th< Pейсов
+  - shifts_list.each do |shift|
+    %tr
+      %td<= link_to_if shift.id != params[:shift_id].to_i, "#{shift.date.to_s(:short_date)}", :shift_id => shift.id
+      %td<= shift.time_name
+      %td<= @person.trips_count(shift)
