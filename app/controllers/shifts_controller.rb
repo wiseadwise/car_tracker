@@ -1,8 +1,12 @@
 # encoding: utf-8
 class ShiftsController < ApplicationController
 
+  before_filter :require_user
+
   def index
-    @shifts = (params[:start_date] && params[:finish_date]) ? Shift.in_period(params[:start_date], params[:finish_date]) : Shift.all 
+    @start_date = params[:start_date] || (DateTime.now - 100.days).to_s(:short_date)
+    @finish_date = params[:finish_date] || DateTime.now.to_s(:short_date)
+    @shifts = Shift.in_period(@start_date, @finish_date)
   end
 
   def new

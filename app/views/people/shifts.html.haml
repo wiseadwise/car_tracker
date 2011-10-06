@@ -6,10 +6,10 @@
 = form_tag do
   .row
     = label_tag "Начало" 
-    = text_field_tag :start_date
+    = text_field_tag :start_date, @start_date
   .row
     = label_tag "Конец" 
-    = text_field_tag :finish_date
+    = text_field_tag :finish_date, @finish_date
   .row
     = submit_tag "Показать"
 = render @person.is_a?(Driver) ? 'driver_shifts' : 'master_shifts'

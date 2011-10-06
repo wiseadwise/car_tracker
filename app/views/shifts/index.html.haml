@@ -6,10 +6,10 @@
 = form_tag("/shifts", :method => :get) do
   .row
     = label_tag "Начало" 
-    = text_field_tag :start_date
+    = text_field_tag :start_date, @start_date
   .row
     = label_tag "Конец" 
-    = text_field_tag :finish_date
+    = text_field_tag :finish_date, @finish_date
   .row
     = submit_tag "Показать"
 = link_to 'Добавить смену', new_shift_path

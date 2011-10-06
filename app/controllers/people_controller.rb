@@ -31,7 +31,9 @@ class PeopleController < ApplicationController
     @shift = Shift.find(params[:shift_id]) if params[:shift_id]
     @trips = @person.trips(@shift) if @shift
     @shifts = @person.shifts
-    @shifts = @shifts.in_period(params[:start_date], params[:finish_date]) if request.post?
+    @start_date = params[:start_date] || (DateTime.now - 100.days).to_s(:short_date)
+    @finish_date = params[:finish_date] || DateTime.now.to_s(:short_date)
+    @shifts = @shifts.in_period(@start_date, @finish_date) if request.post?
   end
 
   def update
