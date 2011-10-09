@@ -13,6 +13,7 @@ class Shift < ActiveRecord::Base
 
   validates :master, :time, :date, :presence => true
   validates :time, :inclusion => TIMES.keys.map(&:to_s)
+  validates :date, :uniqueness => { :scope => :time }
 
   default_scope :order => "date DESC"
 
